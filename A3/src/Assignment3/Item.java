@@ -7,12 +7,10 @@ public class Item {
 	protected String name;
 	protected int quantity;
 	protected double weight;
-	protected String category;
 	// or private?
 	// You will need a constructor (Why?). Create it here.
-	public Item(String category, String name, double basePrice, int quantity, double weight){
+	public Item(String name, double basePrice, int quantity, double weight){
 		this.name = name;
-		this.category = category;
 		this.basePrice = basePrice;
 		this.quantity = quantity;
 		this.weight = weight;	

@@ -5,10 +5,13 @@ public class Grocery extends Item {
 	boolean perishable;
 
 	// variables, constructor here
-	public Grocery(String category, String name, double basePrice, int quantity, double weight, boolean perishable) {
-		super(category, name, basePrice, quantity, weight);
+	public Grocery(String name, double basePrice, int quantity, double weight, boolean perishable) {
+		super(name, basePrice, quantity, weight);
 		this.perishable = perishable;
-		this.category = category;
+	}
+	
+	public String getType(){
+		return "Groceries";
 	}
 
 	// override calculatePrice() if necessary; Implement print methods as

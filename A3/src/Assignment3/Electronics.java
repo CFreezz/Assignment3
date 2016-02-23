@@ -5,11 +5,14 @@ public class Electronics extends Item {
 	boolean fragile;
 	protected String state;
 
-	public Electronics(String category, String name, double basePrice, int quantity, double weight, boolean fragile, String state) {
-		super(category, name, basePrice, quantity, weight);
+	public Electronics(String name, double basePrice, int quantity, double weight, boolean fragile, String state) {
+		super(name, basePrice, quantity, weight);
 		this.fragile = fragile;
 		this.state = state;
-		this.category = category;
+	}
+	
+	public String getType(){
+		return "Electronics";
 	}
 
 	double calculatePrice() {

@@ -52,8 +52,8 @@ public class ShoppingCart {
 		}
 	}
 
-	public void updateItem(String category, String name, int quantity) {
-		Item temp = new Item(category, name, 0, quantity, 0);
+	public void updateItem(String name, int quantity) {
+		Item temp = new Item(name, 0, quantity, 0);
 		addItem(temp);
 	}
 
