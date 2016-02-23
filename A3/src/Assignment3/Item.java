@@ -18,12 +18,15 @@ public class Item {
 	public String getType(){
 		return "Item";
 	}
-	float calculatePrice() {
-		float final_price = 0;
+	double calculatePrice() {
+		double final_price = 0;
 		// Insert price calculation here
 		return final_price;
 	}
-	
+	double roundCents(double amount){
+		int temp = (int) (amount * 100);
+		return (double) (temp/100);
+	}
 	public double getSalesTax() {
 		return salesTax;
 	}
@@ -45,12 +48,12 @@ public class Item {
 	public double getWeight() {
 		return weight;
 	}
+	// Print all applicable attributes of this class
 	void printItemAttributes() {
 		System.out.print("name: " + name );
 		System.out.print(" base price: " + basePrice);
 		System.out.print(" quantity: " + quantity);
 		System.out.print(" weight: " + weight);
-		// Print all applicable attributes of this class
 	}
 
 }
