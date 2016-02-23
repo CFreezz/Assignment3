@@ -7,10 +7,12 @@ public class Item {
 	protected String name;
 	protected int quantity;
 	protected double weight;
+	protected String category;
 	// or private?
 	// You will need a constructor (Why?). Create it here.
-	public Item(String name, double basePrice, int quantity, double weight){
+	public Item(String category, String name, double basePrice, int quantity, double weight){
 		this.name = name;
+		this.category = category;
 		this.basePrice = basePrice;
 		this.quantity = quantity;
 		this.weight = weight;	
@@ -54,6 +56,15 @@ public class Item {
 		System.out.print(" base price: " + basePrice);
 		System.out.print(" quantity: " + quantity);
 		System.out.print(" weight: " + weight);
+	}
+	String[] noTaxStates = new String[] {"TX", "NM", "VA", "AZ", "AK" };
+	boolean stateTax(String state){
+		for(int i=0; i< noTaxStates.length; i++){
+			if(state.equals(noTaxStates[i])){
+				return false;
+			}
+		}
+		return true;
 	}
 
 }

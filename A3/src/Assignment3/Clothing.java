@@ -1,26 +1,20 @@
 package Assignment3;
 
-public class Clothing extends Item 
-{
-
+public class Clothing extends Item {
 	// variables, constructors as necessary
-	
-	public Clothing(String name, double basePrice, int quantity, double weight) {
-		super(name, basePrice, quantity, weight);
-		// TODO Auto-generated constructor stub
+
+	public Clothing(String category, String name, double basePrice, int quantity, double weight) {
+		super(category, name, basePrice, quantity, weight);
+		this.category = category;
+
 	}
 
-	float calculatePrice () 
-	{
-		float final_price = 0;
-		// Insert price calculation here
+	double calculatePrice() {
+		double final_price = basePrice * quantity*1.1;
+		double shipping_price = 20 * weight * quantity;
+		final_price = roundCents(final_price + shipping_price);
 		return final_price;
 	}
-	
-	void printItemAttributes () 
-	{
-		//Print all applicable attributes of this sub-class
-	}
-	
+
 
 }
