@@ -5,7 +5,7 @@ public class Electronics extends Item {
 	boolean fragile;
 	protected String state;
 
-	public Electronics(String name, double basePrice, int quantity, double weight, boolean fragile, String state) {
+	public Electronics(String name, double basePrice, int quantity, int weight, boolean fragile, String state) {
 		super(name, basePrice, quantity, weight);
 		this.fragile = fragile;
 		this.state = state;
@@ -30,16 +30,18 @@ public class Electronics extends Item {
 
 	// Variables, constructors etc. here.
 	void printItemAttributes() {
-		System.out.print("name: " + name);
-		System.out.print(" base price: " + basePrice);
-		System.out.print(" quantity: " + quantity);
-		System.out.print(" weight: " + weight);
+		super.printItemAttributes();
+//		System.out.print("name: " + name);
+//		System.out.print(" base price: " + basePrice);
+//		System.out.print(" quantity: " + quantity);
+//		System.out.print(" weight: " + weight);
 		if(fragile){
 			System.out.print(" fragile ");
 		}else{
 			System.out.print(" non-fragile ");
 		}
 		System.out.print(" state:" + state);
+		System.out.print( " Total price: $" + calculatePrice());
 	}
 	// Implement calculate price/print methods as necessary
 

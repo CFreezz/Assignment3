@@ -6,10 +6,10 @@ public class Item {
 	protected double salesTax = 0.1;
 	protected String name;
 	protected int quantity;
-	protected double weight;
+	protected int weight;
 	// or private?
 	// You will need a constructor (Why?). Create it here.
-	public Item(String name, double basePrice, int quantity, double weight){
+	public Item(String name, double basePrice, int quantity, int weight){
 		this.name = name;
 		this.basePrice = basePrice;
 		this.quantity = quantity;
@@ -25,7 +25,7 @@ public class Item {
 	}
 	double roundCents(double amount){
 		int temp = (int) (amount * 100);
-		return (double) (temp/100);
+		return (double) ( (double) temp/100);
 	}
 	public double getSalesTax() {
 		return salesTax;
@@ -50,10 +50,10 @@ public class Item {
 	}
 	// Print all applicable attributes of this class
 	void printItemAttributes() {
-		System.out.print("name: " + name );
-		System.out.print(" base price: " + basePrice);
-		System.out.print(" quantity: " + quantity);
-		System.out.print(" weight: " + weight);
+		System.out.print("Name " + name);
+		System.out.print(" Price $" + basePrice);
+		System.out.print(" Quantity " + quantity);
+		System.out.print(" Weight " + weight + " lbs ");
 	}
 	String[] noTaxStates = new String[] {"TX", "NM", "VA", "AZ", "AK" };
 	boolean stateTax(String state){

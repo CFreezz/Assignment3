@@ -34,35 +34,45 @@ public class ShoppingCart {
 		}
 	}
 
-	public void removeItem(String name) {
+	public boolean removeItem(String name) {
 		for (int i = 0; i < cart.size(); i++) {
 			if (cart.get(i).getName().equals(name)) {
 				cart.remove(i);
-				return;
+				return true;
 			}
 		}
+		return false;
 	}
 
 	public int searchItem(String name) {
 		Item temp = findItem(name);
 		if (temp == null) {
-			return 0;
+			return -1;
 		} else {
 			return temp.getQuantity();
 		}
 	}
 
-	public void updateItem(String name, int quantity) {
-		Item temp = new Item(name, 0, quantity, 0);
-		addItem(temp);
+	public boolean updateItem(String name, int quantity) {
+
+		Item temp = findItem(name);//new Item(name, 0, quantity, 0);
+		if(temp == null){
+			return false;
+		}
+		temp.setQuantity(quantity);
+		return true;
 	}
 
 	public void printItems() {
 		sort();
+		double total_price = 0;
 		for (Item temp : cart) {
 			temp.printItemAttributes();
 			System.out.print("\n");
+			total_price += temp.calculatePrice();
+			
 		}
+		System.out.println("Total shopping cart price: $" + total_price);
 
 	}
 

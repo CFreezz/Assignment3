@@ -5,7 +5,7 @@ public class Grocery extends Item {
 	boolean perishable;
 
 	// variables, constructor here
-	public Grocery(String name, double basePrice, int quantity, double weight, boolean perishable) {
+	public Grocery(String name, double basePrice, int quantity, int weight, boolean perishable) {
 		super(name, basePrice, quantity, weight);
 		this.perishable = perishable;
 	}
@@ -28,14 +28,16 @@ public class Grocery extends Item {
 
 	// Only re-implement stuff you cannot get from the superclass (Item)
 	void printItemAttributes() {
-		System.out.print("name: " + name);
-		System.out.print(" base price: " + basePrice);
-		System.out.print(" quantity: " + quantity);
-		System.out.print(" weight: " + weight);
+		super.printItemAttributes();
+//		System.out.print("name: " + name);
+//		System.out.print(" base price: " + basePrice);
+//		System.out.print(" quantity: " + quantity);
+//		System.out.print(" weight: " + weight);
 		if(perishable){
 			System.out.print(" perishable ");
 		}else{
 			System.out.print(" non-perishable ");
 		}
+		System.out.print( " Total price: $" + calculatePrice());
 	}
 }

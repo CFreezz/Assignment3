@@ -50,7 +50,7 @@ public class A3Driver {
 			String name = splitLine[2];
 			double price = convertDouble(splitLine[3]);
 			int quantity = convertInt(splitLine[4]);
-			double weight = convertDouble(splitLine[5]);
+			int weight = convertInt(splitLine[5]);
 			if (category.equalsIgnoreCase("clothing")) {
 				Clothing newThing = new Clothing(name, price, quantity, weight);
 				myCart.addItem(newThing);
@@ -58,32 +58,50 @@ public class A3Driver {
 				String strFragility = splitLine[6]; // must be F or NF
 				String strShipState = splitLine[7]; // must be a valid state
 													// abbreviation
-				Electronics newThing = new Electronics(name, price, quantity, weight, convertFragile(strFragility), strShipState);
+				Electronics newThing = new Electronics(name, price, quantity, weight, convertFragile(strFragility),
+						strShipState);
 				myCart.addItem(newThing);
 			} else if (category.equalsIgnoreCase("groceries")) {
 				String strPerishable = splitLine[6];
 				Grocery newThing = new Grocery(name, price, quantity, weight, convertPerishable(strPerishable));
 				myCart.addItem(newThing);
 			}
+			println("Insert: Successfully added " + splitLine[2]);
 		} else if (op.equalsIgnoreCase("delete")) {
-			myCart.removeItem(splitLine[1]);
+			boolean result = myCart.removeItem(splitLine[1]);
+			if (result) {
+				println("Delete: Successful");
+			} else {
+				println("Delete: Failed, item not in shopping cart");
+			}
 		} else if (op.equals("search")) {
-			myCart.searchItem(splitLine[1]);
+			int result = myCart.searchItem(splitLine[1]);
+			if (result == -1) {
+				println("Search: Failed to find " + splitLine[1]);
+			} else {
+				println("Search: There is/are " + result + " " + splitLine[1]);
+			}
 		} else if (op.equalsIgnoreCase("update")) {
-			myCart.updateItem(splitLine[1], convertInt(splitLine[2]));
+			boolean result = myCart.updateItem(splitLine[1], convertInt(splitLine[2]));
+			if (result) {
+				println("Update: Successful");
+			} else {
+				println("Update: Falied, item not in shopping cart");
+			}
 		} else if (op.equalsIgnoreCase("print")) {
 			myCart.printItems();
 		}
 	}
-	
-	private static boolean convertPerishable(String perish){
-		if (perish.equalsIgnoreCase("P")){
+
+	private static boolean convertPerishable(String perish) {
+		if (perish.equalsIgnoreCase("P")) {
 			return true;
 		}
 		return false;
 	}
-	private static boolean convertFragile(String frag){
-		if (frag.equalsIgnoreCase("F")){
+
+	private static boolean convertFragile(String frag) {
+		if (frag.equalsIgnoreCase("F")) {
 			return true;
 		}
 		return false;
@@ -191,10 +209,18 @@ public class A3Driver {
 			println("Invalid quantity");
 			return false;
 		}
+		if(convertInt(strQuantity) < 0){
+			println("Invalid quantity");
+				return false;
+		}
 		String strWeight = splitLine[5]; // must be a valid decimal
-		if (!validDouble(strWeight)) {
+		if (!validInteger(strWeight)) {
 			println("Invalid weight");
 			return false;
+		}
+		if(convertInt(strWeight) < 0){
+			println("Invalid weight");
+				return false;
 		}
 
 		if (category.equalsIgnoreCase("clothing")) {
@@ -273,6 +299,15 @@ public class A3Driver {
 	private static boolean validInteger(String thing) {
 		try {
 			int convert = Integer.parseInt(thing);
+		} catch (Exception e) {
+			println("Not a valid integer");
+			return false;
+		}
+		try {
+			double convertd = Double.parseDouble(thing);
+			if (convertd % 1 != 0) {
+				return false;
+			}
 		} catch (Exception e) {
 			println("Not a valid integer");
 			return false;
