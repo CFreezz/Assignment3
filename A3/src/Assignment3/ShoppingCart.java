@@ -62,6 +62,11 @@ public class ShoppingCart {
 		temp.setQuantity(quantity);
 		return true;
 	}
+	
+	private static double roundCents(double amount){
+		int intAmount =  (int) (amount * 100);
+		return ((double) intAmount / 100.0);
+	}
 
 	public void printItems() {
 		sort();
@@ -70,9 +75,8 @@ public class ShoppingCart {
 			temp.printItemAttributes();
 			System.out.print("\n");
 			total_price += temp.calculatePrice();
-			
 		}
-		System.out.println("Total shopping cart price: $" + total_price);
+		System.out.println("Total shopping cart price: $" + roundCents(total_price));
 
 	}
 

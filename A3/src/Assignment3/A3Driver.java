@@ -16,9 +16,9 @@ public class A3Driver {
 
 	public static void main(String[] args) throws FileNotFoundException {
 		ShoppingCart myCart = new ShoppingCart(getNewShoppingCartID());
+		println("INITIALIZING PROGRAM - Welcome Professor");
+		println("This program includes voice controls. Please say out loud \"Hello Sexy\" to enable voice controls.\n");
 		if (args.length == 1) {
-			System.out.println(args[0]);
-			System.out.println("GROCERIESSSSSSSSSSSSSSSSSSSSSS\n");
 			Scanner in;
 			try { // check if file exists, if yes, continue below
 				in = new Scanner(new File(args[0]));
@@ -70,9 +70,9 @@ public class A3Driver {
 		} else if (op.equalsIgnoreCase("delete")) {
 			boolean result = myCart.removeItem(splitLine[1]);
 			if (result) {
-				println("Delete: Successful");
+				println("Delete: Successfully deleted " + splitLine[1]);
 			} else {
-				println("Delete: Failed, item not in shopping cart");
+				println("Delete: Failed, " + splitLine[1] +  " not in shopping cart");
 			}
 		} else if (op.equals("search")) {
 			int result = myCart.searchItem(splitLine[1]);
@@ -84,9 +84,9 @@ public class A3Driver {
 		} else if (op.equalsIgnoreCase("update")) {
 			boolean result = myCart.updateItem(splitLine[1], convertInt(splitLine[2]));
 			if (result) {
-				println("Update: Successful");
+				println("Update: Successfully updated " + splitLine[1]);
 			} else {
-				println("Update: Falied, item not in shopping cart");
+				println("Update: Falied, " + splitLine[1] + " not in shopping cart");
 			}
 		} else if (op.equalsIgnoreCase("print")) {
 			myCart.printItems();
@@ -196,62 +196,66 @@ public class A3Driver {
 		String strPrice = splitLine[3]; // must be a valid cash number (two
 										// decimal points)
 		if (!validNumber(strPrice)) { // check valid number
-			System.out.println("Invalid Price");
+			System.out.print("Invalid Price, ");
 			return false;
 		}
 		if (!validCashNumber(convertDouble(strPrice))) { // check valid cash
 															// number
-			println("Invalid price");
+			print("Invalid price, ");
+			return false;
+		}
+		if (convertDouble(strPrice) < 0){
+			print("Invalid price, ");
 			return false;
 		}
 		String strQuantity = splitLine[4]; // must be a valid integer
 		if (!validInteger(strQuantity)) {
-			println("Invalid quantity");
+			print("Invalid quantity, ");
 			return false;
 		}
-		if(convertInt(strQuantity) < 0){
-			println("Invalid quantity");
-				return false;
+		if (convertInt(strQuantity) < 0) {
+			print("Invalid quantity, ");
+			return false;
 		}
 		String strWeight = splitLine[5]; // must be a valid decimal
 		if (!validInteger(strWeight)) {
-			println("Invalid weight");
+			print("Invalid weight, ");
 			return false;
 		}
-		if(convertInt(strWeight) < 0){
-			println("Invalid weight");
-				return false;
+		if (convertInt(strWeight) < 0) {
+			print("Invalid weight, ");
+			return false;
 		}
 
 		if (category.equalsIgnoreCase("clothing")) {
 			if (splitLine.length != 6) {
-				println("Not correct number of arguments for transaction");
+				print("Not correct number of arguments for transaction, ");
 				return false;
 			}
 		} else if (category.equalsIgnoreCase("electronics")) {
 			if (splitLine.length != 8) {
-				println("Not correct number of arguments for transaction");
+				print("Not correct number of arguments for transaction, ");
 				return false;
 			}
 			String strFragility = splitLine[6]; // must be F or NF
 			if (!validFragility(strFragility)) {
-				println("Invalid fragility argument");
+				print("Invalid fragility argument, ");
 				return false;
 			}
 			String strShipState = splitLine[7]; // must be a valid state
 												// abbreviation
 			if (!validState(strShipState)) {
-				println("Invalid ship state argument");
+				print("Invalid ship state argument, ");
 				return false;
 			}
 		} else if (category.equalsIgnoreCase("groceries")) {
 			if (splitLine.length != 7) {
-				println("Not correct number of arguments for transaction");
+				print("Not correct number of arguments for transaction, ");
 				return false;
 			}
 			String strPerishable = splitLine[6];
 			if (!validPerishable(strPerishable)) {
-				println("Invalid perishable argument");
+				print("Invalid perishable argument, ");
 				return false;
 			}
 
@@ -277,7 +281,12 @@ public class A3Driver {
 		if (splitLine.length != 3) {
 			return false;
 		}
-
+		if (!validInteger(splitLine[2])) {
+			return false;
+		}
+		if (convertInt(splitLine[2]) < 0) {
+			return false;
+		}
 		return true;
 	}
 
@@ -298,20 +307,15 @@ public class A3Driver {
 
 	private static boolean validInteger(String thing) {
 		try {
-			int convert = Integer.parseInt(thing);
-		} catch (Exception e) {
-			println("Not a valid integer");
-			return false;
-		}
-		try {
 			double convertd = Double.parseDouble(thing);
-			if (convertd % 1 != 0) {
+			if (convertd % 1.0 != 0) {
 				return false;
 			}
 		} catch (Exception e) {
 			println("Not a valid integer");
 			return false;
 		}
+
 		return true;
 	}
 
@@ -344,7 +348,13 @@ public class A3Driver {
 	}
 
 	private static int convertInt(String thing) {
-		return Integer.parseInt(thing);
+		double convertD = 0;
+		try {
+			convertD = Double.parseDouble(thing);
+		} catch (Exception e) {
+
+		}
+		return (int) convertD;
 	}
 
 	private static void print(String line) {
