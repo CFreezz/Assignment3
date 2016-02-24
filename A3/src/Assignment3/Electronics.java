@@ -34,7 +34,11 @@ public class Electronics extends Item {
 		System.out.print(" base price: " + basePrice);
 		System.out.print(" quantity: " + quantity);
 		System.out.print(" weight: " + weight);
-		System.out.print(" fragile:" + fragile);
+		if(fragile){
+			System.out.print(" fragile ");
+		}else{
+			System.out.print(" non-fragile ");
+		}
 		System.out.print(" state:" + state);
 	}
 	// Implement calculate price/print methods as necessary

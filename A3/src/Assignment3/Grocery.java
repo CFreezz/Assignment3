@@ -32,6 +32,10 @@ public class Grocery extends Item {
 		System.out.print(" base price: " + basePrice);
 		System.out.print(" quantity: " + quantity);
 		System.out.print(" weight: " + weight);
-		System.out.print(" perishable:" + perishable);
+		if(perishable){
+			System.out.print(" perishable ");
+		}else{
+			System.out.print(" non-perishable ");
+		}
 	}
 }

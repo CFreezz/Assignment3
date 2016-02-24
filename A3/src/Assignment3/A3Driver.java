@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class driver {
+public class A3Driver {
 
 	static String validOps[] = { "insert", "search", "delete", "update", "print" };
 	static String validCategories[] = { "clothing", "electronics", "groceries" };
