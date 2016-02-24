@@ -20,14 +20,14 @@ public class Grocery extends Item {
 		double final_price = basePrice * quantity;
 		double shipping_price = 20 * weight * quantity;
 		if (perishable) {
-			shipping_price = shipping_price * 1.2;
+			shipping_price = shipping_price * premiumShip;
 		}
 		final_price = roundCents(final_price + shipping_price);
 		return final_price;
 	}
 
 	void printItemAttributes() {
-
+		super.printItemAttributes();
 		if (perishable) {
 			System.out.print(" perishable ");
 		} else {

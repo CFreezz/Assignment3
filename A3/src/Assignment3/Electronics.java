@@ -19,18 +19,18 @@ public class Electronics extends Item {
 	double calculatePrice() {
 		double final_price = basePrice * quantity;
 		if (stateTax(state)) {
-			final_price = final_price * 1.1;
+			final_price = final_price * salesTax;
 		}
 		double shipping_price = 20 * weight * quantity;
 		if (fragile) {
-			shipping_price = shipping_price * 1.2;
+			shipping_price = shipping_price * premiumShip;
 		}
 		final_price = roundCents(final_price + shipping_price);
 		return final_price;
 	}
 
 	void printItemAttributes() {
-
+		super.printItemAttributes();
 		if (fragile) {
 			System.out.print(" fragile ");
 		} else {

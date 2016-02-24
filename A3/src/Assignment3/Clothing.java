@@ -9,7 +9,7 @@ public class Clothing extends Item {
 	}
 
 	double calculatePrice() {
-		double final_price = basePrice * quantity * 1.1;
+		double final_price = basePrice * quantity * salesTax;
 		double shipping_price = 20 * weight * quantity;
 		final_price = roundCents(final_price + shipping_price);
 		return final_price;

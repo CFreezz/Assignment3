@@ -4,7 +4,8 @@ package Assignment3;
 public class Item {
 	// Declare variables for this class. T
 	protected double basePrice;
-	protected double salesTax = 0.1;
+	protected double salesTax = 1.1;
+	protected double premiumShip = 1.2;
 	protected String name;
 	protected int quantity;
 	protected int weight;
