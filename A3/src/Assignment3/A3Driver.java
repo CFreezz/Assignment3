@@ -29,7 +29,7 @@ public class A3Driver {
 				in = new Scanner(new File(args[0]));
 				while (in.hasNextLine()) {
 					String line = in.nextLine();
-					String splitLine[] = line.split(" ");
+					String splitLine[] = line.split("\\s+");
 					if (!validLine(splitLine)) {// validLine will print out
 												// necessary error message
 						continue;

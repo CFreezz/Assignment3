@@ -1,4 +1,4 @@
-insert clothing cshirt 10.91 3 2
+insert 				clothing cshirt 10.91 3 2
 insert groceries bshirt 10.25 3 2.00 P
 insert electronics ashirt 12330.99 3 268 NF TX
 print
