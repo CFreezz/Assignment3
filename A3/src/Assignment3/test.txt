@@ -1,19 +1,4 @@
-insert clothing shirt 20.50 1 2.0
-insert clothing zshirt 20.50 1 -2
-insert clothing xshirt 20.50 -1 2
-insert clothing ashirt 20.50 1 2
-insert clothing 4shirt 20.50 1 2
-insert clothing Ashirt 20.12 1 2
-insert groceries ztomatoe 20.50 1 2 NP
-insert groceries xbroccoli 20.50 1 2 NP
-insert groceries acarrot 20.50 1 2 P
-insert groceries 4brea 20.50 1 2 P
-insert groceries Aswooo 20.50 1 2 NP
-insert electronics ps3 300 1 5 F TX
-insert electronics xbox 300 1 5 NF OK
-update xbox 5
-delete 4brea
+insert clothing cshirt 10.91 3 2
+insert groceries bshirt 10.25 3 -2.01 P
+insert electronics ashirt 12330.99 3 268 NF TX
 print
-search psqw
-update psqw 5
-delete psqw

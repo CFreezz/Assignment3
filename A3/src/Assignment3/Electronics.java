@@ -1,5 +1,6 @@
 package Assignment3;
-
+//Electronics is a subclass of item, overloads calculate price for premium shipping
+//and print the fragile attribute
 public class Electronics extends Item {
 
 	boolean fragile;
@@ -10,8 +11,8 @@ public class Electronics extends Item {
 		this.fragile = fragile;
 		this.state = state;
 	}
-	
-	public String getType(){
+
+	public String getType() {
 		return "Electronics";
 	}
 
@@ -28,21 +29,15 @@ public class Electronics extends Item {
 		return final_price;
 	}
 
-	// Variables, constructors etc. here.
 	void printItemAttributes() {
-		super.printItemAttributes();
-//		System.out.print("name: " + name);
-//		System.out.print(" base price: " + basePrice);
-//		System.out.print(" quantity: " + quantity);
-//		System.out.print(" weight: " + weight);
-		if(fragile){
+
+		if (fragile) {
 			System.out.print(" fragile ");
-		}else{
+		} else {
 			System.out.print(" non-fragile ");
 		}
 		System.out.print(" state:" + state);
-		System.out.print( " Total price: $" + calculatePrice());
+		System.out.print(" Total price: $" + calculatePrice());
 	}
-	// Implement calculate price/print methods as necessary
 
 }

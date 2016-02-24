@@ -1,5 +1,10 @@
 package Assignment3;
 
+//Assignment 3 Main Driver
+//Jo Le 
+//Chris Friesen
+//Shopping Cart
+// 2/24/2016
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -72,7 +77,7 @@ public class A3Driver {
 			if (result) {
 				println("Delete: Successfully deleted " + splitLine[1]);
 			} else {
-				println("Delete: Failed, " + splitLine[1] +  " not in shopping cart");
+				println("Delete: Failed, " + splitLine[1] + " not in shopping cart");
 			}
 		} else if (op.equals("search")) {
 			int result = myCart.searchItem(splitLine[1]);
@@ -204,7 +209,7 @@ public class A3Driver {
 			print("Invalid price, ");
 			return false;
 		}
-		if (convertDouble(strPrice) < 0){
+		if (convertDouble(strPrice) < 0) {
 			print("Invalid price, ");
 			return false;
 		}
